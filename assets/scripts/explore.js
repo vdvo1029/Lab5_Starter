@@ -3,6 +3,7 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
+    let img = document.querySelector('img')
     let speech = window.speechSynthesis;
     let voices = [];
 
@@ -41,7 +42,9 @@ function init() {
           
           if (!speech.speaking) {
             speech.speak(talk);
+            img.src="assets\\images\\smiling-open.png";
           }
+          img.src="assets\\images\\smiling.png";
         }
     });
 
