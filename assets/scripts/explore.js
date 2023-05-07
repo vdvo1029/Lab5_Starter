@@ -3,33 +3,34 @@
 window.addEventListener('DOMContentLoaded', init);
 
 function init() {
+    let img = document.querySelector('img')
     let speech = window.speechSynthesis;
     let voices = [];
-    
-    
 
     let voiceSelect = document.getElementById("voice-select");
-    console.log("hello");
     
+    // Some credit to the SpeechSynthesis docs
     function populateVoiceList(){
         voices = speech.getVoices();
         for (let i = 0; i < voices.length; i++) {
             const option = document.createElement("option");
-            option.textContent = `${voices[i].name} (${voices[i].lang})`;
-        
-            option.setAttribute("data-name", voices[i].name);
+            option.textContent = `${voices[i].name})`;
+            option.setAttribute("voice", voices[i].name);
             voiceSelect.appendChild(option);
         }
     }
+
     populateVoiceList();
+    
+    // SpeechSynthesis docs, to ensure that the site will load the voices if the voice options change
     if (speechSynthesis.onvoiceschanged !== undefined) {
         speechSynthesis.onvoiceschanged = populateVoiceList;
       }
-      const button = document.querySelector('button');
+    
+    const button = document.querySelector('button');
     button.addEventListener("click", (event)=>{
         let image = document.querySelector("[alt='Smiling face']");
         let text = document.getElementById("text-to-speak");
-        image.src = "assets/images/smiling-open.png";
         
 
 
@@ -40,14 +41,12 @@ function init() {
           if (voices[i].name === selectedOption) {
             utterThis.voice = voices[i];
           }
+          img.src="assets\\images\\smiling.png";
         }
         
         speech.speak(utterThis);
-        utterThis.addEventListener("end",(event)=>{
       
-          image.src = "assets/images/smiling.png";
-          console.log("should");
-      });
+
         
     });
     
