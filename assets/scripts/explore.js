@@ -27,7 +27,9 @@ function init() {
       }
       const button = document.querySelector('button');
     button.addEventListener("click", (event)=>{
+        let image = document.querySelector("[alt='Smiling face']");
         let text = document.getElementById("text-to-speak");
+        image.src = "assets/images/smiling-open.png";
         
 
 
@@ -41,9 +43,13 @@ function init() {
         }
         
         speech.speak(utterThis);
+        utterThis.addEventListener("end",(event)=>{
       
-
+          image.src = "assets/images/smiling.png";
+          console.log("should");
+      });
         
     });
+    
 
 }
