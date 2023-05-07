@@ -1,6 +1,6 @@
 # Lab 5 - Starter
 
-Vincent Vo, Harish Vasanth\
+Vincent Vo, Harish Vasanth
 
 Harish introduction-to-github: https://github.com/hnvultimate123/introduction-to-github
 
